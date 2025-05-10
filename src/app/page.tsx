@@ -1,103 +1,66 @@
-import Image from "next/image";
+import Downloadbtn from "@/components/Downloadbtn";
+import Link from "next/link";
+import { FaGithubSquare, FaLinkedin, FaInstagramSquare } from "react-icons/fa";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <main className='px-4 sm:px-8 py-12'>
+      <section className=''>
+        <div className='border-b-3 border-primary pb-6'>
+          <h1 className='text-2xl mb-1 uppercase'>Madhu Umashankar</h1>
+          <p className=' mb-2 font-body font-semibold uppercase '>
+            Full Stack Web Developer
+          </p>
+          <p>
+            I build accessible, pixel-perfect digital experiences for the web.
+          </p>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        <div className='flex justify-between items-center my-6'>
+          <div className='flex gap-4 '>
+            <Link href='#'>
+              <FaGithubSquare className='text-primary bg-background w-10 h-10' />
+            </Link>
+            <Link href='#'>
+              <FaLinkedin className='text-primary bg-background w-10 h-10' />
+            </Link>
+            <Link href='#'>
+              <FaInstagramSquare className='text-primary bg-background w-10 h-10' />
+            </Link>
+          </div>
+          <Downloadbtn></Downloadbtn>
+        </div>
+
+        <div>
+          <h2 className='uppercase mb-3'>About me</h2>
+          <p className='text-lg  '>
+            I&apos;m a Full-Stack Developer specializing in the MERN stack
+            (MongoDB, Express.js, React, Node.js) and Next.js, with a passion
+            for building scalable and user-centric web applications.
+            Transitioning from a 2.4-year role as a Systems Engineer at Infosys,
+            I bring a strong foundation in problem-solving, Agile methodologies,
+            and a commitment to delivering high-quality, responsive digital
+            solutions. My objective is to leverage modern JavaScript frameworks
+            to create intuitive and impactful online experiences.
+          </p>
+        </div>
+
+        <div className='my-6'>
+          <h2 className='uppercase tracking-wide mb-3'>Experience</h2>
+          <p className='text-body font-semibold uppercase'>
+            Systems Engineer | Infosys Limited
+          </p>
+          <p className='mb-3 text-sm'>Aug 2018 - Dec 2020 | Mangalore, India</p>
+          <p>
+            Provided application support and development for enterprise
+            applications, focusing on Mainframe and Micro Focus systems. My
+            responsibilities included developing and optimizing COBOL programs,
+            JCL scripts, and DB2 database queries, alongside monitoring job
+            performance and managing incidents. This experience allowed me to
+            gain strong skills in Agile development cycles, collaborative
+            problem-solving, and application debugging.
+          </p>
+        </div>
+      </section>
+    </main>
   );
 }
