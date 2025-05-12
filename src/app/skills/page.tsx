@@ -3,8 +3,8 @@ import React from "react";
 
 const page = () => {
   return (
-    <div>
-      <h1>Skils</h1>
+    <div className='w-[80vw]'>
+      <h1>Skills</h1>
       <SkillsGame></SkillsGame>
     </div>
   );

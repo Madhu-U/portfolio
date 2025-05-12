@@ -43,4 +43,9 @@ h6 {
   .input-field {
     @apply mb-4 text-lg w-full px-4 py-2 border-2 border-background text-background  focus:outline-none focus:border-foreground;
   }
+
+  .skills-section {
+    @apply flex flex-wrap gap-5 px-2 py-3 
+      bg-primary;
+  }
 }

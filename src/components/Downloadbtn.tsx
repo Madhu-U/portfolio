@@ -7,7 +7,7 @@ const Downloadbtn = () => {
       download
       target='_blank'
       rel='noopener noreferrer'
-      className='px-8 py-4 bg-primary text-foreground font-semibold uppercase tracking-widest'
+      className='px-8 py-4 bg-primary text-foreground font-semibold uppercase tracking-widest hover:outline-1 hover:outline-foreground hover:border-3 hover:border-background'
     >
       Resume
     </a>

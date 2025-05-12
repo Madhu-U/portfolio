@@ -3,7 +3,7 @@ import { MdEmail } from "react-icons/md";
 
 const ContactForm = () => {
   return (
-    <form className='bg-primary p-4 my-3 max-w-[500px]'>
+    <form className='bg-primary p-4 my-3 max-w-[700px]'>
       <h1 className='text-2xl mb-2 flex items-center gap-2'>
         <MdEmail className='w-8 h-8' />
         Contact

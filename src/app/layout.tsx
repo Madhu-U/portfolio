@@ -31,7 +31,9 @@ export default function RootLayout({
         className={`min-h-screen ${oswald.variable} ${barlow.variable} antialiased `}
       >
         <Navbar></Navbar>
-        <div className='sm:ml-[5rem] '>{children}</div>
+        <div className='sm:ml-[2.5rem] flex flex-col items-center'>
+          {children}
+        </div>
       </body>
     </html>
   );

@@ -1,74 +1,109 @@
 "use client";
-import React, { useRef } from "react";
-import { animate, motion, useMotionValue } from "framer-motion";
-import skillCategories from "@/lib/skills";
+import React, { useState } from "react"; // Import useEffect
+import skills from "../lib/skills";
+import { motion } from "framer-motion"; // Correct import for Framer Motion v7+
+import { IconType } from "react-icons";
 
-const gridSize = 84;
+const SkillsGame = () => {
+  // Store the ID of the currently selected skill, or null if none
+  const [selectedSkillId, setSelectedSkillId] = useState<number | null>(null);
+  // Store the full info object of the selected skill
+  const [skillInfo, setSkillInfo] = useState<{
+    id: number;
+    label: string;
+    icon: IconType;
+    desc: string;
+  } | null>(null);
 
-const SkillsGame = (): React.ReactElement => {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const handleClick = (id: number) => {
+    // Determine the next selected ID
+    const newSelectedId = selectedSkillId === id ? null : id;
+    setSelectedSkillId(newSelectedId); // Schedule state update
 
-  // This will hold a map of skill ids to their x and y motion values
-  const motionValues = useRef<Map<string, { x: any; y: any }>>(new Map());
-
-  // This function will initialize motion values for each skill
-  const getMotionValues = (id: string) => {
-    if (!motionValues.current.has(id)) {
-      motionValues.current.set(id, {
-        x: useMotionValue(0),
-        y: useMotionValue(0),
-      });
-    }
-    return motionValues.current.get(id)!;
-  };
-
-  const handleDragEnd = (x: number, y: number, id: string) => {
-    // Snap to the nearest grid cell on drag end
-    const snappedX = Math.round(x / gridSize) * gridSize;
-    const snappedY = Math.round(y / gridSize) * gridSize;
-
-    // Update the position with smooth animation
-    animate(motionValues.current.get(id)!.x, snappedX, {
-      type: "spring",
-      stiffness: 300,
-      damping: 30,
-    });
-    animate(motionValues.current.get(id)!.y, snappedY, {
-      type: "spring",
-      stiffness: 300,
-      damping: 30,
-    });
-  };
-
-  return (
-    <div
-      className='grid grid-cols-4 sm:grid-cols-6 gap-[16px] sm:gap-[12px] w-full max-w-[670px] h-[670px] sm:h-[500px] mx-auto border-2 border-primary bg-accent relative'
-      ref={containerRef}
-    >
-      {Object.values(skillCategories)
+    // Update skillInfo based on the new selected ID
+    if (newSelectedId !== null) {
+      // Find the skill matching the newly selected ID
+      const skill = Object.values(skills)
         .flat()
-        .map((skill) => {
-          const Icon = skill.icon;
+        .find((s) => s.id === newSelectedId);
+      setSkillInfo(skill || null); // Set the found skill, or null if not found
+    } else {
+      setSkillInfo(null); // Clear skill info if deselecting
+    }
+  };
 
-          // Get motion values for the specific skill
-          const { x, y } = getMotionValues(skill.id);
+  // Use useEffect to log skillInfo after it updates
+  // useEffect(() => {
+  //   if (skillInfo) {
+  //     console.log("Skill Info Updated:", skillInfo.label, skillInfo.desc);
+  //   } else if (selectedSkillId === null) {
+  //     console.log("Skill Info Cleared");
+  //   }
+  // }, [skillInfo, selectedSkillId]);
 
+  const renderSkillSection = (
+    category: string,
+    skillList: {
+      id: number;
+      label: string;
+      icon: IconType;
+      desc: string;
+    }[]
+  ) => (
+    <div>
+      <h2 className='mb-2 text-xl'>{category}</h2>
+      <div className='skills-section'>
+        {skillList.map((skill) => {
+          const IconComponent = skill.icon;
           return (
             <motion.div
               key={skill.id}
-              drag
-              dragConstraints={containerRef}
-              dragElastic={0}
-              dragDirectionLock
-              onDragEnd={() => handleDragEnd(x.get(), y.get(), skill.id)}
-              style={{ x, y }}
-              className='w-[64px] sm:w-[80px] h-[64px] sm:h-[80px] border bg-background border-foreground grid place-items-center active:cursor-grabbing'
+              className='bg-background w-15 h-15 grid place-items-center hover:cursor-pointer'
+              onClick={() => handleClick(skill.id)} //
             >
-              <Icon className='w-6 h-6 mx-auto text-primary' />
-              <p>{skill.label}</p>
+              <motion.span
+                whileHover={{
+                  scale: 1.4,
+                }}
+                animate={{
+                  scale: selectedSkillId === skill.id ? 1.4 : 1,
+                }}
+                style={{
+                  background:
+                    selectedSkillId === skill.id
+                      ? "linear-gradient(180deg,rgba(255, 70, 85, 1) 0%, rgba(0, 0, 0, 0) 100%)"
+                      : "none",
+                }}
+              >
+                <IconComponent className='w-10 h-10 ' />
+              </motion.span>
             </motion.div>
           );
         })}
+      </div>
+    </div>
+  );
+
+  return (
+    <div className=''>
+      <div className='flex flex-col gap-12 w-full '>
+        {/* Render sections using the helper */}
+        {renderSkillSection("Frontend", skills.frontend)}
+        {renderSkillSection("Backend", skills.backend)}
+        {renderSkillSection("Tools", skills.tools)}
+
+        {/* Display the selected skill's description */}
+        <div className=''>
+          {skillInfo ? (
+            <div className=''>
+              <h3 className='my-3 text-xl'>{skillInfo.label}</h3>
+              <p className='text-lg'>{skillInfo.desc}</p>
+            </div>
+          ) : (
+            <p>Click on a skill icon to see its description.</p>
+          )}
+        </div>
+      </div>
     </div>
   );
 };

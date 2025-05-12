@@ -4,8 +4,8 @@ import { FaGithubSquare, FaLinkedin, FaInstagramSquare } from "react-icons/fa";
 
 export default function Home() {
   return (
-    <main className='px-4 sm:px-8 py-12'>
-      <section className=''>
+    <main className='px-4 sm:px-8 py-12 max-w-[90%] bg-background h-[100vh]'>
+      <section className='sm:flex sm:flex-col sm:gap-5'>
         <div className='border-b-3 border-primary pb-6'>
           <h1 className='text-2xl mb-1 uppercase'>Madhu Umashankar</h1>
           <p className=' mb-2 font-body font-semibold uppercase '>
@@ -16,7 +16,7 @@ export default function Home() {
           </p>
         </div>
         <div className='flex justify-between items-center my-6'>
-          <div className='flex gap-4 '>
+          <div className='flex gap-4'>
             <Link href='#'>
               <FaGithubSquare className='text-primary bg-background w-10 h-10' />
             </Link>
