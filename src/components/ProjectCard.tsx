@@ -1,7 +1,7 @@
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 import { FiExternalLink } from "react-icons/fi";
+import ExternalLink from "./ExternalLink";
 
 interface ProjectCardProps {
   imageUrl: string;
@@ -24,21 +24,16 @@ const ProjectCard = ({
       <h1 className='text-xl sm:text-2xl my-3'>{title}</h1>
       <p className='text-sm sm:text-base '>{desc}</p>
       <div className='flex justify-between items-center mt-3'>
-        <Link
+        <ExternalLink
+          iconName={FiExternalLink}
           href={githubUrl}
-          className='bg-primary text-foreground uppercase tracking-wider font-body font-medium px-3 py-2 flex items-center gap-1 hover:bg-background hover:text-foreground'
-        >
-          Github Repo
-          <FiExternalLink></FiExternalLink>
-        </Link>
-        <Link
+          linkName='Github Repo'
+        />
+        <ExternalLink
+          iconName={FiExternalLink}
           href={liveSiteUrl}
-          className='bg-primary text-foreground uppercase tracking-wider font-body font-medium px-3 py-2 flex items-center gap-1
-          hover:bg-background hover:text-foreground'
-        >
-          Live Site
-          <FiExternalLink></FiExternalLink>
-        </Link>
+          linkName='Live site'
+        />
       </div>
     </div>
   );

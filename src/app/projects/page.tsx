@@ -5,7 +5,7 @@ import projects from "@/lib/projects";
 
 const page = () => {
   return (
-    <div className='px-4 sm:px-8 py-12 '>
+    <div className='px-4 sm:px-8 pt-12 pb-20 '>
       <h1 className='text-xl sm:text-2xl my-3 sm:mb-8'>Projects</h1>
       <div className='flex flex-col sm:flex-row gap-x-4 gap-y-8 flex-wrap items-center justify-center'>
         {projects.map((project) => {

@@ -4,7 +4,7 @@ import { FaGithubSquare, FaLinkedin, FaInstagramSquare } from "react-icons/fa";
 
 export default function Home() {
   return (
-    <main className='px-4 sm:px-8 py-12 max-w-[90%] bg-background h-[100vh]'>
+    <main className='px-4 sm:px-8 pt-12 pb-20 max-w-[90%] '>
       <section className='sm:flex sm:flex-col sm:gap-5'>
         <div className='border-b-3 border-primary pb-6'>
           <h1 className='text-2xl mb-1 uppercase'>Madhu Umashankar</h1>

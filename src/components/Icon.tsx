@@ -10,7 +10,7 @@ interface IconProps {
 const Icon = ({ iconName, href }: IconProps): React.ReactElement => {
   const IconComponent = iconName;
   return (
-    <Link href={href} target='_blank'>
+    <Link href={href} target='_blank' rel='noopener noreferrer'>
       <IconComponent className='text-primary w-10 h-10'></IconComponent>
     </Link>
   );

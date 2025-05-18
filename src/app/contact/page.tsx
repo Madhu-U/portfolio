@@ -5,7 +5,7 @@ import { FaGithubSquare, FaLinkedin, FaInstagramSquare } from "react-icons/fa";
 
 const page = () => {
   return (
-    <div className='bg-foreground text-background h-[100vh] px-4 py-12 sm:flex sm:flex-col sm:gap-4 sm:px-[8rem] w-full'>
+    <div className='bg-foreground text-background  px-4 pt-12 pb-20 sm:flex sm:flex-col sm:gap-4 sm:px-[8rem] w-full'>
       <h1 className='text-2xl border-b-3 border-primary pb-2'>Get in touch!</h1>
       <p className='my-4'>
         I&apos;m always excited to connect with fellow developers, potential

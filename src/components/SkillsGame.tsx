@@ -3,6 +3,8 @@ import React, { useState } from "react"; // Import useEffect
 import skills from "../lib/skills";
 import { motion } from "framer-motion"; // Correct import for Framer Motion v7+
 import { IconType } from "react-icons";
+import { FiExternalLink } from "react-icons/fi";
+import ExternalLink from "./ExternalLink";
 
 const SkillsGame = () => {
   // Store the ID of the currently selected skill, or null if none
@@ -13,6 +15,7 @@ const SkillsGame = () => {
     label: string;
     icon: IconType;
     desc: string;
+    link: string;
   } | null>(null);
 
   const handleClick = (id: number) => {
@@ -32,15 +35,6 @@ const SkillsGame = () => {
     }
   };
 
-  // Use useEffect to log skillInfo after it updates
-  // useEffect(() => {
-  //   if (skillInfo) {
-  //     console.log("Skill Info Updated:", skillInfo.label, skillInfo.desc);
-  //   } else if (selectedSkillId === null) {
-  //     console.log("Skill Info Cleared");
-  //   }
-  // }, [skillInfo, selectedSkillId]);
-
   const renderSkillSection = (
     category: string,
     skillList: {
@@ -48,6 +42,7 @@ const SkillsGame = () => {
       label: string;
       icon: IconType;
       desc: string;
+      link: string;
     }[]
   ) => (
     <div>
@@ -93,11 +88,16 @@ const SkillsGame = () => {
         {renderSkillSection("Tools", skills.tools)}
 
         {/* Display the selected skill's description */}
-        <div className=''>
+        <div className='bg-foreground text-background p-4'>
           {skillInfo ? (
-            <div className=''>
-              <h3 className='my-3 text-xl'>{skillInfo.label}</h3>
-              <p className='text-lg'>{skillInfo.desc}</p>
+            <div className='flex flex-col gap-3'>
+              <h3 className='text-xl'>{skillInfo.label}</h3>
+              <p className='text-lg '>{skillInfo.desc}</p>
+              <ExternalLink
+                iconName={FiExternalLink}
+                href={skillInfo.link}
+                linkName='learn more'
+              />
             </div>
           ) : (
             <p>Click on a skill icon to see its description.</p>
