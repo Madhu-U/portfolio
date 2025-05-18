@@ -1,5 +1,5 @@
 import ContactForm from "@/components/ContactForm";
-import Link from "next/link";
+import Icon from "@/components/Icon";
 import React from "react";
 import { FaGithubSquare, FaLinkedin, FaInstagramSquare } from "react-icons/fa";
 
@@ -14,15 +14,18 @@ const page = () => {
       </p>
       <p className='my-2 font-medium uppercase'>Reach out to me on:</p>
       <div className='flex gap-4 pl-3'>
-        <Link href='#'>
-          <FaGithubSquare className='text-primary bg-foreground w-10 h-10' />
-        </Link>
-        <Link href='#'>
-          <FaLinkedin className='text-primary bg-foreground w-10 h-10' />
-        </Link>
-        <Link href='#'>
-          <FaInstagramSquare className='text-primary bg-foreground w-10 h-10' />
-        </Link>
+        <Icon
+          iconName={FaGithubSquare}
+          href='https://github.com/Madhu-U'
+        ></Icon>
+        <Icon
+          iconName={FaLinkedin}
+          href='https://www.linkedin.com/in/madhu-u/'
+        ></Icon>
+        <Icon
+          iconName={FaInstagramSquare}
+          href='https://www.instagram.com/madhu_umashankar/'
+        ></Icon>
       </div>
       <ContactForm />
     </div>

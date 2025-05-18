@@ -1,5 +1,5 @@
 import Downloadbtn from "@/components/Downloadbtn";
-import Link from "next/link";
+import Icon from "@/components/Icon";
 import { FaGithubSquare, FaLinkedin, FaInstagramSquare } from "react-icons/fa";
 
 export default function Home() {
@@ -17,15 +17,18 @@ export default function Home() {
         </div>
         <div className='flex justify-between items-center my-6'>
           <div className='flex gap-4'>
-            <Link href='#'>
-              <FaGithubSquare className='text-primary bg-background w-10 h-10' />
-            </Link>
-            <Link href='#'>
-              <FaLinkedin className='text-primary bg-background w-10 h-10' />
-            </Link>
-            <Link href='#'>
-              <FaInstagramSquare className='text-primary bg-background w-10 h-10' />
-            </Link>
+            <Icon
+              iconName={FaGithubSquare}
+              href='https://github.com/Madhu-U'
+            ></Icon>
+            <Icon
+              iconName={FaLinkedin}
+              href='https://www.linkedin.com/in/madhu-u/'
+            ></Icon>
+            <Icon
+              iconName={FaInstagramSquare}
+              href='https://www.instagram.com/madhu_umashankar/'
+            ></Icon>
           </div>
           <Downloadbtn></Downloadbtn>
         </div>

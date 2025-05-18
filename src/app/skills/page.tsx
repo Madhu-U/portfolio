@@ -4,7 +4,7 @@ import React from "react";
 const page = () => {
   return (
     <div className='w-[80vw]'>
-      <h1>Skills</h1>
+      <h1 className='my-6 text-2xl'>Skills</h1>
       <SkillsGame></SkillsGame>
     </div>
   );
