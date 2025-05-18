@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react"; // Import useEffect
 import skills from "../lib/skills";
-import { motion } from "framer-motion"; // Correct import for Framer Motion v7+
+import { AnimatePresence, motion } from "framer-motion"; // Correct import for Framer Motion v7+
 import { IconType } from "react-icons";
 import { FiExternalLink } from "react-icons/fi";
 import ExternalLink from "./ExternalLink";
@@ -79,6 +79,32 @@ const SkillsGame = () => {
     </div>
   );
 
+  const animationVariants = {
+    hidden: {
+      opacity: 0,
+      scaleY: 0,
+      originY: 0,
+      height: 0, // Start with height 0
+    },
+    visible: {
+      opacity: 1,
+      scaleY: 1,
+      originY: 0,
+      height: "auto", // Set height to auto
+      transition: {
+        duration: 0.2,
+        ease: "easeInOut",
+      },
+    },
+    exit: {
+      opacity: 0,
+      scaleY: 0,
+      originY: 0,
+      height: 0,
+      transition: { duration: 0.2, ease: "easeInOut" },
+    },
+  };
+
   return (
     <div className=''>
       <div className='flex flex-col gap-12 w-full '>
@@ -89,19 +115,39 @@ const SkillsGame = () => {
 
         {/* Display the selected skill's description */}
         <div className='bg-foreground text-background p-4'>
-          {skillInfo ? (
-            <div className='flex flex-col gap-3'>
-              <h3 className='text-xl'>{skillInfo.label}</h3>
-              <p className='text-lg '>{skillInfo.desc}</p>
-              <ExternalLink
-                iconName={FiExternalLink}
-                href={skillInfo.link}
-                linkName='learn more'
-              />
-            </div>
-          ) : (
-            <p>Click on a skill icon to see its description.</p>
-          )}
+          <AnimatePresence mode='wait'>
+            {skillInfo ? (
+              <motion.div
+                key={skillInfo.id}
+                className='flex flex-col gap-3'
+                variants={animationVariants}
+                initial='hidden'
+                animate='visible'
+                exit='exit'
+                style={{ overflow: "hidden" }}
+              >
+                <h3 className='text-xl'>{skillInfo.label}</h3>
+                <p className='text-lg '>{skillInfo.desc}</p>
+                <ExternalLink
+                  iconName={FiExternalLink}
+                  href={skillInfo.link}
+                  linkName='learn more'
+                />
+              </motion.div>
+            ) : (
+              <motion.p
+                key='placeholder-text'
+                initial={{ opacity: 0 }}
+                animate={{
+                  opacity: 1,
+                  transition: { duration: 0.2, easings: "easeInOut" },
+                }}
+                exit={{ opacity: 0 }}
+              >
+                Click on a skill icon to see its description.
+              </motion.p>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </div>

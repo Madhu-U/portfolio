@@ -203,7 +203,7 @@ const skills = {
       label: "Linux",
       icon: FaLinux, // Assuming FaLinux is imported
       desc: "An open-source operating system kernel, widely used for servers, desktops, and embedded systems due to its stability and flexibility.",
-      link: "https://www.linuxfoundation.org/get-involved/learn", // Linux Foundation Learning Resources
+      link: "https://www.linuxfoundation.org/", // Linux Foundation Learning Resources
     },
     {
       id: 25,
